@@ -1,0 +1,6 @@
+display_name: 3S Filter
+short_description: Triple-layer safety monitor for AI agents (Sentinel, Sentiment, Semantic).
+default_prompt: Use the 3s-filter skill to evaluate the safety of this action or output.
+interface:
+  icon: shield-check
+  brand_color: "#60A5FA"

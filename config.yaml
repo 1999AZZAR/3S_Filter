@@ -1,0 +1,44 @@
+# 3S Engine Configuration
+hardware:
+  device: "cpu"
+  max_memory_mb: 4096
+  use_onnx: true
+
+sentinel:
+  window_size: 100
+  contamination: 0.05
+  min_samples_to_train: 30
+
+sentiment:
+  model: "cardiffnlp/twitter-roberta-base-sentiment-latest"
+  max_length: 128
+
+semantic:
+  model: "all-MiniLM-L6-v2"
+  cache_dir: "./3s_engine_cache"
+  dangerous_keywords:
+    - "delete all"
+    - "bypass security"
+    - "ignore safety"
+    - "rm -rf"
+    - "format"
+    - "exploit"
+    - "sandbox escape"
+    - "ignore previous instructions"
+    - "disable safety"
+    - "emergency override"
+    - "removal of all"
+    - "fresh start"
+    - "/etc/shadow"
+    - "root password"
+    - "recursive deletion"
+    - "exfiltrate"
+    - "reverse shell"
+    - "system secrets"
+
+action_gate:
+  sentinel_weight: 0.2
+  sentiment_weight: 0.4
+  semantic_weight: 0.4
+  block_threshold: 0.6
+  flag_threshold: 0.3
